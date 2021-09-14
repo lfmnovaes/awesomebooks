@@ -1,8 +1,24 @@
+const books = [];
+
 class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
   }
+
+  addBook() {
+    const title = document.getElementById('enterTitle').value;
+    const author = document.getElementById('enterAuthor').value;
+    // const storedBooks = JSON.parse(localStorage.books);
+    console.log('executing this')
+    books.push({title: title, author: author});
+    console.log(books);
+    // localStorage.setItem('books', JSON.stringify(storedBooks));
+    document.getElementById('enterTitle').value = '';
+    document.getElementById('enterAuthor').value = '';
+    refresh();
+  };
+
 }
 
 const bookList = document.getElementById('booklist');
@@ -20,14 +36,22 @@ const addLi = (title, author) => {
 
 const refresh = () => {
   bookList.innerHTML = '';
-  const storedBooks = JSON.parse(localStorage.books);
-  storedBooks.forEach(
-    (book) => {
-      bookList.appendChild(addLi(book.title, book.author));
-    },
-  );
+  console.log(localStorage.getItem('books'));
+  //const storedBooks = JSON.parse(localStorage.books);
+
+  if (localStorage.getItem('books') === "[]" && books.length > 0){
+    console.log('Inside this if')
+    books.forEach(
+      (book) => {
+        bookList.appendChild(addLi(book.title, book.author));
+      },
+    );
+    localStorage.setItem('books',JSON.stringify(books));
+  }
+
 };
 
+/*
 const addBook = () => {
   const title = document.getElementById('enterTitle').value;
   const author = document.getElementById('enterAuthor').value;
@@ -38,6 +62,7 @@ const addBook = () => {
   document.getElementById('enterAuthor').value = '';
   refresh();
 };
+*/
 
 const removeBook = (e) => {
   const tgt = e.target;
@@ -52,7 +77,8 @@ const removeBook = (e) => {
 };
 
 bookList.addEventListener('click', removeBook);
-document.getElementById('btnAdd').addEventListener('click', addBook);
+const myBook = new Book();
+document.getElementById('btnAdd').addEventListener('click', myBook.addBook);
 
 window.onload = () => {
   if (localStorage.getItem('books') === null) {
