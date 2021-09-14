@@ -1,4 +1,4 @@
-const books = [];
+let books = [];
 
 class Book {
   constructor(title, author) {
@@ -39,17 +39,20 @@ const refresh = () => {
   console.log(localStorage.getItem('books'));
   //const storedBooks = JSON.parse(localStorage.books);
 
-  if (localStorage.getItem('books') === "[]" && books.length > 0){
-    console.log('Inside this if')
-    books.forEach(
-      (book) => {
-        bookList.appendChild(addLi(book.title, book.author));
-      },
-    );
-    localStorage.setItem('books',JSON.stringify(books));
-  }
+  console.log(books);
 
+  localStorage.setItem('books', JSON.stringify(books));
+  popLi();
 };
+
+const popLi = () => {
+  books.forEach(
+    (book) => {
+      bookList.appendChild(addLi(book.title, book.author));
+    },
+  );
+};
+
 
 /*
 const addBook = () => {
@@ -68,9 +71,12 @@ const removeBook = (e) => {
   const tgt = e.target;
   if (tgt.tagName === 'BUTTON') {
     const title = e.composedPath()[1].firstChild.data.split(' - ')[0];
-    let storedBooks = JSON.parse(localStorage.books);
-    storedBooks = storedBooks.filter((el) => el.title !== title);
-    localStorage.setItem('books', JSON.stringify(storedBooks));
+    // let storedBooks = JSON.parse(localStorage.books);
+    // storedBooks = storedBooks.filter((el) => el.title !== title);
+    // localStorage.setItem('books', JSON.stringify(storedBooks));
+    //
+    // filter from books
+    //
     tgt.closest('li').remove();
   }
   refresh();
@@ -83,8 +89,8 @@ document.getElementById('btnAdd').addEventListener('click', myBook.addBook);
 window.onload = () => {
   if (localStorage.getItem('books') === null) {
     localStorage.setItem('books', JSON.stringify([]));
-    refresh();
   } else {
-    refresh();
+    books = JSON.parse(localStorage.books);
+    popLi();
   }
 };
