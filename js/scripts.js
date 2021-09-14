@@ -42,7 +42,7 @@ const addBook = () => {
 const removeBook = (e) => {
   const tgt = e.target;
   if (tgt.tagName === 'BUTTON') {
-    const title = e.path[1].firstChild.data.split(' - ')[0];
+    const title = e.composedPath()[1].firstChild.data.split(' - ')[0];
     let storedBooks = JSON.parse(localStorage.books);
     storedBooks = storedBooks.filter((el) => el.title !== title);
     localStorage.setItem('books', JSON.stringify(storedBooks));
