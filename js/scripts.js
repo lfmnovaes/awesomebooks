@@ -1,67 +1,73 @@
-let books = [];
+/* eslint max-classes-per-file: ["error", 2] */
+
+class Book {
+  constructor(title, author) {
+    this.id = (new Date()).getTime();
+    this.title = title;
+    this.author = author;
+  }
+}
 
 const bookList = document.getElementById('booklist');
 
-const addLi = (title, author) => {
+const addLi = (id, title, author) => {
   const li = document.createElement('li');
+  li.id = id;
   li.innerText = `${title} - ${author}`;
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.innerText = 'Remove';
-  btn.onclick = 'removeBook';
   li.appendChild(btn);
   return li;
 };
 
-const popLi = () => {
-  books.forEach(
-    (book) => {
-      bookList.appendChild(addLi(book.title, book.author));
-    },
-  );
-};
-
-const refresh = () => {
-  bookList.innerHTML = '';
-  localStorage.setItem('books', JSON.stringify(books));
-  popLi();
-};
-
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
+class Bookshelf {
+  constructor() {
+    this.data = [];
   }
 
-  addBook() {
-    this.title = document.getElementById('enterTitle').value;
-    this.author = document.getElementById('enterAuthor').value;
-    books.push({ title: this.title, author: this.author });
+  addBook(title, author) {
+    this.data.push(new Book(title, author));
     document.getElementById('enterTitle').value = '';
     document.getElementById('enterAuthor').value = '';
-    refresh();
+    this.refresh();
   }
 
-  removeBook(e) {
-    const tgt = e.target;
-    if (tgt.tagName === 'BUTTON') {
-      [this.title] = e.composedPath()[1].firstChild.data.split(' - ');
-      books = books.filter((el) => el.title !== this.title);
-      tgt.closest('li').remove();
-    }
-    refresh();
+  removeBook(id) {
+    this.data = this.data.filter((el) => el.id !== id);
+    this.refresh();
+  }
+
+  refresh() {
+    bookList.innerHTML = '';
+    localStorage.setItem('books', JSON.stringify(this.data));
+    this.data.forEach(
+      (book) => {
+        bookList.appendChild(addLi(book.id, book.title, book.author));
+      },
+    );
   }
 }
 
-const myBook = new Book();
-bookList.addEventListener('click', myBook.removeBook);
-document.getElementById('btnAdd').addEventListener('click', myBook.addBook);
+const myCollection = new Bookshelf();
+
+bookList.addEventListener('click', (e) => {
+  const tgt = e.target;
+  if (tgt.tagName === 'BUTTON') {
+    tgt.closest('li').remove();
+    myCollection.removeBook(parseInt(tgt.closest('li').id, 10));
+  }
+}, false);
+
+document.getElementById('btnAdd').addEventListener('click', () => {
+  myCollection.addBook(document.getElementById('enterTitle').value, document.getElementById('enterAuthor').value);
+}, false);
 
 window.onload = () => {
   if (localStorage.getItem('books') === null) {
     localStorage.setItem('books', JSON.stringify([]));
   } else {
-    books = JSON.parse(localStorage.books);
-    popLi();
+    myCollection.data = JSON.parse(localStorage.books);
+    myCollection.refresh();
   }
 };
