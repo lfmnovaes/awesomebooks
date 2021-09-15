@@ -13,6 +13,7 @@ const bookList = document.getElementById('booklist');
 const addLi = (id, title, author) => {
   const li = document.createElement('li');
   li.id = id;
+  li.className = 'element';
   li.innerText = `${title} - ${author}`;
   const btn = document.createElement('button');
   btn.type = 'button';

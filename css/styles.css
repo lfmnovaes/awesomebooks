@@ -1,3 +1,60 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+body {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 h1 {
-  font-size: 50px;
+  text-align: center;
+}
+
+hr {
+  width: 25%;
+  margin: 2rem auto;
+}
+
+form {
+  gap: 10px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 1px;
+}
+
+li:nth-child(odd) {
+  background-color: rgb(224, 221, 221);
+}
+
+.element {
+  display: flex;
+  margin: 2px 0;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  align-self: flex-end;
+  box-shadow: 3px 3px gray;
+  border: 2px solid black;
+}
+
+#btnAdd {
+  margin-right: 15%;
+}
+
+.black-border {
+  border: 2px solid black;
 }

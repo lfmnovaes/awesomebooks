@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Awesome Books</title>
   </head>
   <body>
-    <h1>Awesome Books</h1>
-    <ul id="booklist">
-    </ul>
-    <form>
-      <label>Title</label>
-      <input type="text" id="enterTitle" required>
-      <label>Author</label>
-      <input type="text" id="enterAuthor" required>
+    <h1>All awesome books</h1>
+    <div class="black-border">
+      <ul id="booklist" class="flex-center">
+      </ul>
+    </div>
+    <hr>
+    <form class="flex-center">
+      <h2>Add a new book</h2>
+      <input type="text" id="enterTitle" required placeholder="Title">
+      <input type="text" id="enterAuthor" required placeholder="Author">
       <button id="btnAdd" type="button">Add</button>
     </form>
     <script src="js/scripts.js"></script>
