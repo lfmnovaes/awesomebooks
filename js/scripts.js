@@ -1,4 +1,6 @@
 /* eslint max-classes-per-file: ["error", 2] */
+/* global luxon */
+/* eslint no-undef: "error" */
 
 const showDate = () => {
   const { DateTime } = luxon;
@@ -79,3 +81,30 @@ window.onload = () => {
     myCollection.refresh();
   }
 };
+
+const list = document.getElementById('list');
+const addNew = document.getElementById('add-new');
+const contact = document.getElementById('contact');
+
+document.getElementById('ul-navbar').addEventListener('click', (e) => {
+  const tgt = e.target;
+  switch (tgt.innerText) {
+    case 'List':
+      list.style.display = 'initial';
+      addNew.style.display = 'none';
+      contact.style.display = 'none';
+      break;
+    case 'Add New':
+      list.style.display = 'none';
+      addNew.style.display = 'initial';
+      contact.style.display = 'none';
+      break;
+    case 'Contact':
+      list.style.display = 'none';
+      addNew.style.display = 'none';
+      contact.style.display = 'initial';
+      break;
+    default:
+      break;
+  }
+}, false);

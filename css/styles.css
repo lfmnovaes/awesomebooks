@@ -4,8 +4,18 @@
 }
 
 body {
-  /* max-width: 500px; */
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  list-style-type: none;
+}
+
+.p5 {
+  padding: 0 5vw;
 }
 
 nav {
@@ -13,48 +23,52 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 95%;
   margin: 0 auto;
-  border: 1px solid black;
   padding: 3px;
 }
 
-h1 {
+.thin-border {
+  border: 1px solid black;
+}
+
+h2 {
   text-align: center;
+  font-size: 30px;
 }
 
 span {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   padding: 5px;
 }
 
 a {
-  padding: 3px;
   text-decoration: none;
   color: black;
 }
 
-hr {
-  width: 25%;
-  margin: 2rem auto;
+a:hover {
+  color: blue;
+}
+
+a:active {
+  color: purple;
 }
 
 form {
-  gap: 10px;
-  width: 25%;
+  gap: 15px;
+  width: 400px;
   margin: 0 auto;
 }
 
 #ul-navbar > li {
-  list-style-type: none;
   display: inline;
   justify-content: space-around;
-  
+  padding: 20px 4px;
+  border-left: 1px solid black;
 }
 
 #booklist {
-  list-style-type: none;
   padding: 1px;
 }
 
@@ -81,12 +95,45 @@ button {
   border: 2px solid black;
 }
 
-#btnAdd {
-  margin-right: 15%;
-}
-
 .black-border {
   border: 2px solid black;
   max-width: 60%;
   margin: 0 auto;
+}
+
+#list {
+  display: initial;
+}
+
+#add-new {
+  display: none;
+}
+
+#enterTitle,
+#enterAuthor {
+  width: 100%;
+}
+
+#contact {
+  display: none;
+  text-align: center;
+}
+
+#contact > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#contact > * ul {
+  text-align: start;
+}
+
+.name {
+  font-size: 24px;
+  padding: 0 0 30px 0;
+}
+
+footer {
+  margin: auto 5vw 0 5vw;
 }
