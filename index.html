@@ -10,13 +10,16 @@
   <body>
     <header>
       <nav>
-        <h3>Awesome Books</h3>
-        <ul>
-          <li>List</li>
-          <li>Add New</li>
-          <li>Contact</li>
+        <a href="#">Awesome Books</a>
+        <ul id="ul-navbar">
+          <li><a href="#">List</a></li>
+          <li><a href="#">Add New</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </nav>
+      <span id="date">
+
+      </span>
     </header>
     <h1>All awesome books</h1>
     <div class="black-border">
@@ -30,6 +33,7 @@
       <input type="text" id="enterAuthor" required placeholder="Author">
       <button id="btnAdd" type="button">Add</button>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js" integrity="sha256-CnZmNCHHUMy22/PJclCIISZ5Ib4MnUu+7ee5YNxtsZQ=" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>

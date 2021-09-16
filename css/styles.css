@@ -4,12 +4,35 @@
 }
 
 body {
-  max-width: 500px;
+  /* max-width: 500px; */
   margin: 0 auto;
+}
+
+nav {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 95%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 3px;
 }
 
 h1 {
   text-align: center;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+a {
+  padding: 3px;
+  text-decoration: none;
+  color: black;
 }
 
 hr {
@@ -19,16 +42,23 @@ hr {
 
 form {
   gap: 10px;
-  width: 50%;
+  width: 25%;
   margin: 0 auto;
 }
 
-ul {
+#ul-navbar > li {
+  list-style-type: none;
+  display: inline;
+  justify-content: space-around;
+  
+}
+
+#booklist {
   list-style-type: none;
   padding: 1px;
 }
 
-li:nth-child(odd) {
+#booklist > li:nth-child(odd) {
   background-color: rgb(224, 221, 221);
 }
 
@@ -57,4 +87,6 @@ button {
 
 .black-border {
   border: 2px solid black;
+  max-width: 60%;
+  margin: 0 auto;
 }
