@@ -8,18 +8,52 @@
     <title>Awesome Books</title>
   </head>
   <body>
-    <h1>All awesome books</h1>
-    <div class="black-border">
-      <ul id="booklist" class="flex-center">
-      </ul>
-    </div>
-    <hr>
-    <form class="flex-center">
-      <h2>Add a new book</h2>
-      <input type="text" id="enterTitle" required placeholder="Title">
-      <input type="text" id="enterAuthor" required placeholder="Author">
-      <button id="btnAdd" type="button">Add</button>
-    </form>
+    <header class="p5">
+      <nav class="thin-border">
+        <a href="#" class="p5">Awesome Books</a>
+        <ul id="ul-navbar">
+          <li><a href="#">List</a></li>
+          <li><a href="#">Add New</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <span id="date"></span>
+    </header>
+    <section id="list">
+      <h2>All awesome books</h2>
+      <div class="black-border">
+        <ul id="booklist" class="flex-center">
+        </ul>
+      </div>
+    </section>
+    <section id="add-new">
+      <form class="flex-center">
+        <h2>Add a new book</h2>
+        <input type="text" id="enterTitle" required placeholder="Title">
+        <input type="text" id="enterAuthor" required placeholder="Author">
+        <button id="btnAdd" type="button">Add</button>
+      </form>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can reach out to us:</p>
+      <div>
+        <ul>
+          <li class="name">Luis Fernando</li>
+          <li><a href="https://github.com/lfmnovaes/">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/lfmnovaes/">Linkedin</a></li>
+        </ul>
+        <ul>
+          <li class="name">Alvaro Ruiz</li>
+          <li><a href="https://github.com/alvarorf/">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/alvaro-andr%C3%A9s-ruiz-florez/">Linkedin</a></li>
+        </ul>
+      </div>
+    </section>
+    <footer class="thin-border p5">
+      <p>Copyright by Luis Fernando and Alvaro Ruiz</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js" integrity="sha256-CnZmNCHHUMy22/PJclCIISZ5Ib4MnUu+7ee5YNxtsZQ=" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>
